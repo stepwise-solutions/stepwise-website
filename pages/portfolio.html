@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Stepwise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Step<span>.</span>wise</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<div class="page-header page-header--right">
+  <span class="section-tag">Our Work</span>
+  <h1>Built with precision,<br>shipped <em>incrementally</em></h1>
+  <p class="page-sub">A collection of open-source contributions, tooling, and real-world data engineering projects — all publicly available on GitHub.</p>
+</div>
+
+<section class="github-section">
+  <span class="section-tag">Open Source</span>
+  <h2>GitHub Profile</h2>
+  <p class="section-desc">Browse our repositories, contributions, and public tooling below.</p>
+  <!-- IMPORTANT: Replace the href below with your actual GitHub URL -->
+  <a href="https://github.com/stepwise-solutions" target="_blank" class="github-card">
+    <div class="gh-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+    </div>
+    <div class="gh-info">
+      <h3>github.com/stepwise-solutions</h3>
+      <p>Explore our open-source projects, data engineering templates, dbt packages, pipeline utilities, and more.</p>
+    </div>
+    <span class="gh-arrow">→</span>
+  </a>
+</section>
+
+<!-- <section class="projects-section">
+  <span class="section-tag">Featured Projects</span>
+  <h2>What we've built</h2>
+  <p class="section-desc">Representative examples of the work we do for clients across industries.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="proj-type">Pipeline Architecture</span>
+      <h3>Real-Time E-Commerce Analytics</h3>
+      <p>Designed and built a Kafka-to-BigQuery streaming pipeline processing 50M+ events per day, enabling sub-second dashboard refresh for a retail client.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Kafka</span>
+        <span class="proj-tag">BigQuery</span>
+        <span class="proj-tag">dbt</span>
+        <span class="proj-tag">Looker</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="proj-type">Data Warehouse Migration</span>
+      <h3>Legacy SQL to Snowflake Migration</h3>
+      <p>Migrated a 10-year-old on-prem SQL Server warehouse to Snowflake, reducing query times by 8× and cutting infrastructure costs by 60%.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Snowflake</span>
+        <span class="proj-tag">Fivetran</span>
+        <span class="proj-tag">dbt</span>
+        <span class="proj-tag">Python</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="proj-type">Data Observability</span>
+      <h3>End-to-End Data Quality Framework</h3>
+      <p>Implemented a data quality and observability layer with Great Expectations and Monte Carlo across a 200+ table warehouse for a FinTech company.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Great Expectations</span>
+        <span class="proj-tag">Airflow</span>
+        <span class="proj-tag">Redshift</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="proj-type">Open Source</span>
+      <h3>dbt Utility Package</h3>
+      <p>Published a dbt package of reusable macros for date-spining, incremental logic, and data vault patterns — used by teams across multiple organisations.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">dbt</span>
+        <span class="proj-tag">SQL</span>
+        <span class="proj-tag">Jinja</span>
+        <span class="proj-tag">Open Source</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="proj-type">Cloud Infrastructure</span>
+      <h3>Automated Data Platform on GCP</h3>
+      <p>Terraformed a fully automated, reproducible data platform on Google Cloud — from networking to BigQuery, Composer, and IAM — deployed in under an hour.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Terraform</span>
+        <span class="proj-tag">GCP</span>
+        <span class="proj-tag">Cloud Composer</span>
+        <span class="proj-tag">BigQuery</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="proj-type">Analytics Engineering</span>
+      <h3>Self-Serve Analytics Layer</h3>
+      <p>Built a semantic layer and Metabase deployment enabling non-technical stakeholders to self-serve data exploration with zero SQL knowledge required.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Metabase</span>
+        <span class="proj-tag">dbt Metrics</span>
+        <span class="proj-tag">Snowflake</span>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="capabilities">
+  <span class="section-tag">Expertise</span>
+  <h2>Core capabilities</h2>
+  <p class="section-desc" style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0;">The areas where we consistently deliver measurable results for clients.</p>
+  <div class="cap-grid">
+    <div class="cap-item">
+      <h4>Data Ingestion</h4>
+      <p>Batch and streaming pipelines from any source</p>
+    </div>
+    <div class="cap-item">
+      <h4>Warehouse Design</h4>
+      <p>Modelling patterns built for performance and clarity</p>
+    </div>
+    <div class="cap-item">
+      <h4>Transformation</h4>
+      <p>dbt-first, tested, documented, and version-controlled</p>
+    </div>
+    <div class="cap-item">
+      <h4>Orchestration</h4>
+      <p>Airflow, Prefect, and cloud-native scheduling</p>
+    </div>
+    <div class="cap-item">
+      <h4>Cloud IaC</h4>
+      <p>Reproducible infra with Terraform across AWS, GCP, Azure</p>
+    </div>
+    <div class="cap-item">
+      <h4>BI & Reporting</h4>
+      <p>Dashboards, semantic layers, and self-serve tooling</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h2>Ready to build something <em>together</em>?</h2>
+  <a href="contact.html" class="btn-primary">Start a Conversation →</a>
+</div>
+
+<footer>
+  <a href="index.html" class="logo">Step<span>.</span>wise</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p class="footer-copy">&copy; 2025 Stepwise. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

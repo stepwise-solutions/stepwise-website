@@ -1,0 +1,1130 @@
+/* ============================================================
+   STEPWISE — Main Stylesheet
+   ============================================================
+   Structure:
+   1.  CSS Custom Properties (design tokens)
+   2.  Reset & Base
+   3.  Typography
+   4.  Layout utilities
+   5.  Navigation
+   6.  Buttons
+   7.  Page header (portfolio & contact inner pages)
+   8.  Stats bar
+   9.  Section shared styles
+   10. Footer
+   11. Hero (index.html)
+   12. Services (index.html)
+   13. Approach / timeline (index.html)
+   14. Tech stack pills (index.html)
+   15. GitHub card (portfolio.html)
+   16. Projects grid (portfolio.html)
+   17. Capabilities grid (portfolio.html)
+   18. CTA strip (portfolio.html)
+   19. Contact layout (contact.html)
+   20. Contact form elements (contact.html)
+   21. Form status messages (contact.html)
+   22. Responsive — mobile breakpoint
+   ============================================================ */
+
+
+/* ── 1. CSS CUSTOM PROPERTIES ─────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg:    #0a0e17;
+  --bg2:   #0f1521;
+  --bg3:   #141c2e;
+
+  /* Borders */
+  --line:  rgba(255, 255, 255, 0.07);
+
+  /* Brand colours */
+  --accent:  #3B9EFF;
+  --accent2: #00D4A1;
+  --accent-hover: #5babff;
+
+  /* Text */
+  --text:  #e8eaf0;
+  --text-strong: #f0f2f8;
+  --muted: #7a8499;
+
+  /* Hero staircase step fills */
+  --step1: #1a2640;
+  --step2: #1e2e4a;
+  --step3: #223354;
+  --step4: #26395e;
+  --step5: #2a4068;
+
+  /* Typography */
+  --font-display: 'DM Serif Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  /* Spacing scale */
+  --section-pad:      6rem 4rem;
+  --section-pad-sm:   4rem 1.5rem;
+  --page-header-pad:  10rem 4rem 5rem;
+  --inner-pad:        5rem 4rem;
+  --inner-pad-sm:     3rem 1.5rem;
+  --footer-pad:       3rem 4rem;
+  --footer-pad-sm:    2rem 1.5rem;
+
+  /* Border radius */
+  --radius-sm: 2px;
+  --radius:    4px;
+  --radius-md: 6px;
+}
+
+
+/* ── 2. RESET & BASE ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+
+/* ── 3. TYPOGRAPHY ────────────────────────────────────────── */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-strong);
+  margin-bottom: 1rem;
+}
+
+h1 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text-strong);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--text-strong);
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+a {
+  color: var(--accent);
+  transition: color 0.2s;
+}
+
+
+/* ── 4. LAYOUT UTILITIES ──────────────────────────────────── */
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.section-sub {
+  color: var(--muted);
+  max-width: 560px;
+  margin-bottom: 3.5rem;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+.page-sub {
+  color: var(--muted);
+  max-width: 540px;
+  font-size: 1rem;
+}
+
+
+/* ── 5. NAVIGATION ────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2.5rem;
+}
+
+nav ul a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+nav ul a:hover,
+nav ul a.active {
+  color: var(--accent);
+}
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--bg) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius);
+  font-weight: 500 !important;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover {
+  background: var(--accent-hover);
+  color: var(--bg) !important;
+}
+
+
+/* ── 6. BUTTONS ───────────────────────────────────────────── */
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+/* ── 7. PAGE HEADER (inner pages) ─────────────────────────── */
+.page-header {
+  padding: var(--page-header-pad);
+  background: var(--bg2);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Portfolio: glow on right */
+.page-header--right::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 40%;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(59, 158, 255, 0.06), transparent);
+}
+
+/* Contact: glow on left */
+.page-header--left::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 40%;
+  background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(0, 212, 161, 0.05), transparent);
+}
+
+
+/* ── 8. STATS BAR ─────────────────────────────────────────── */
+.stats-bar {
+  display: flex;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg2);
+}
+
+.stat {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+  border-right: 1px solid var(--line);
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--accent);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* ── 9. SECTION SHARED ────────────────────────────────────── */
+section {
+  padding: var(--section-pad);
+}
+
+
+/* ── 10. FOOTER ───────────────────────────────────────────── */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding: var(--footer-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+footer .logo {
+  font-size: 1.1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(122, 132, 153, 0.5);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+
+/* ── 11. HERO (index.html) ────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(59, 158, 255, 0.08), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent2);
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Staircase graphic */
+.steps-graphic {
+  position: absolute;
+  right: -2rem;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  opacity: 0.6;
+}
+
+.step-block {
+  width: 90px;
+  border-top: 2px solid var(--accent);
+  transition: height 0.3s;
+}
+
+.step-block:nth-child(1) { height: 80px;  background: var(--step1); }
+.step-block:nth-child(2) { height: 160px; background: var(--step2); }
+.step-block:nth-child(3) { height: 240px; background: var(--step3); }
+.step-block:nth-child(4) { height: 320px; background: var(--step4); }
+.step-block:nth-child(5) { height: 400px; background: var(--step5); }
+.step-block:nth-child(6) { height: 480px; background: var(--step5); opacity: 0.7; }
+.step-block:nth-child(7) { height: 560px; background: var(--step5); opacity: 0.4; }
+
+.step-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--accent);
+  padding: 0.4rem;
+  writing-mode: vertical-lr;
+  letter-spacing: 0.1em;
+}
+
+
+/* ── 12. SERVICES (index.html) ────────────────────────────── */
+.services {
+  background: var(--bg2);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.service-card {
+  background: var(--bg2);
+  padding: 2.5rem;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.service-card:hover {
+  background: var(--bg3);
+}
+
+.service-icon {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent2);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.service-step {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(59, 158, 255, 0.3);
+}
+
+
+/* ── 13. APPROACH / TIMELINE (index.html) ─────────────────── */
+.approach {
+  background: var(--bg);
+}
+
+.approach-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+  border-left: 2px solid var(--line);
+  padding-left: 2rem;
+  margin-left: 1rem;
+}
+
+.approach-step {
+  padding: 1.5rem 0 2.5rem;
+  position: relative;
+}
+
+.approach-step::before {
+  content: '';
+  position: absolute;
+  left: -2.6rem;
+  top: 0.4rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(59, 158, 255, 0.15);
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.approach-step p {
+  font-size: 0.9rem;
+}
+
+
+/* ── 14. TECH STACK PILLS (index.html) ────────────────────── */
+.tech-stack {
+  background: var(--bg3);
+}
+
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(59, 158, 255, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  background: rgba(59, 158, 255, 0.05);
+}
+
+
+/* ── 15. GITHUB CARD (portfolio.html) ─────────────────────── */
+.github-section {
+  padding: var(--inner-pad);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.github-card {
+  border: 1px solid var(--line);
+  background: var(--bg2);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 720px;
+  transition: border-color 0.3s, background 0.3s;
+  text-decoration: none;
+}
+
+.github-card:hover {
+  border-color: rgba(59, 158, 255, 0.3);
+  background: var(--bg3);
+}
+
+.gh-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg3);
+}
+
+.gh-icon svg {
+  fill: var(--muted);
+  width: 28px;
+  height: 28px;
+  transition: fill 0.2s;
+}
+
+.github-card:hover .gh-icon svg {
+  fill: var(--accent);
+}
+
+.gh-info h3 {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.gh-info p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.gh-arrow {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.github-card:hover .gh-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+
+/* ── 16. PROJECTS GRID (portfolio.html) ───────────────────── */
+.projects-section {
+  padding: var(--inner-pad);
+  background: var(--bg2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 2.5rem;
+}
+
+.project-card {
+  background: var(--bg2);
+  padding: 2rem 2.5rem;
+  transition: background 0.3s;
+  position: relative;
+}
+
+.project-card:hover {
+  background: var(--bg3);
+}
+
+.proj-type {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.project-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.project-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.proj-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(59, 158, 255, 0.15);
+  color: rgba(59, 158, 255, 0.7);
+  border-radius: var(--radius-sm);
+}
+
+
+/* ── 17. CAPABILITIES GRID (portfolio.html) ───────────────── */
+.capabilities {
+  padding: var(--inner-pad);
+  background: var(--bg);
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.cap-item {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+}
+
+.cap-item p {
+  font-size: 0.85rem;
+}
+
+
+/* ── 18. CTA STRIP (portfolio.html) ───────────────────────── */
+.cta-strip {
+  background: var(--bg3);
+  border-top: 1px solid var(--line);
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.cta-strip h2 {
+  font-size: 1.8rem;
+  max-width: 420px;
+  margin-bottom: 0;
+}
+
+.cta-strip h2 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+
+/* ── 19. CONTACT LAYOUT (contact.html) ────────────────────── */
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  min-height: 70vh;
+}
+
+.contact-info {
+  padding: var(--inner-pad);
+  background: var(--bg3);
+  border-right: 1px solid var(--line);
+}
+
+.contact-info h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.info-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.info-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: var(--bg2);
+}
+
+.info-item-text h4 {
+  font-size: 0.7rem;
+  color: var(--accent2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.info-item-text p {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.info-item-text a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+.response-badge {
+  margin-top: 3rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(0, 212, 161, 0.2);
+  border-left: 3px solid var(--accent2);
+  background: rgba(0, 212, 161, 0.04);
+  border-radius: var(--radius);
+}
+
+.response-badge p {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent2);
+  margin-bottom: 0.2rem;
+}
+
+.response-badge span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.contact-form-wrap {
+  padding: var(--inner-pad);
+  background: var(--bg);
+}
+
+
+/* ── 20. CONTACT FORM ELEMENTS (contact.html) ─────────────── */
+.setup-notice {
+  background: rgba(59, 158, 255, 0.06);
+  border: 1px solid rgba(59, 158, 255, 0.2);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  line-height: 1.7;
+}
+
+.setup-notice strong {
+  color: var(--text-strong);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea,
+select {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(59, 158, 255, 0.4);
+  background: var(--bg3);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(122, 132, 153, 0.5);
+}
+
+select option {
+  background: var(--bg2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.7;
+}
+
+.submit-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn .spinner {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(10, 14, 23, 0.3);
+  border-top-color: var(--bg);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.submit-btn.loading .spinner { display: inline-block; }
+.submit-btn.loading .btn-label { display: none; }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ── 21. FORM STATUS MESSAGES (contact.html) ──────────────── */
+#form-status {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  display: none;
+}
+
+#form-status.success {
+  display: block;
+  border: 1px solid rgba(0, 212, 161, 0.25);
+  background: rgba(0, 212, 161, 0.06);
+  color: var(--accent2);
+}
+
+#form-status.error {
+  display: block;
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  background: rgba(255, 80, 80, 0.06);
+  color: #ff6b6b;
+}
+
+
+/* ── 22. RESPONSIVE — MOBILE ──────────────────────────────── */
+@media (max-width: 900px) {
+  /* Contact two-column collapses to single column */
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: var(--inner-pad-sm);
+  }
+
+  .contact-form-wrap {
+    padding: var(--inner-pad-sm);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  nav ul {
+    gap: 1.2rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 7rem 1.5rem 4rem;
+  }
+
+  .steps-graphic {
+    display: none;
+  }
+
+  /* Sections */
+  section {
+    padding: var(--section-pad-sm);
+  }
+
+  /* Page header */
+  .page-header {
+    padding: 7rem 1.5rem 4rem;
+  }
+
+  /* Inner page sections */
+  .github-section,
+  .projects-section,
+  .capabilities,
+  .cta-strip {
+    padding: var(--inner-pad-sm);
+  }
+
+  /* GitHub card */
+  .github-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gh-arrow {
+    display: none;
+  }
+
+  /* Stats */
+  .stats-bar {
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    flex: 1 1 40%;
+  }
+
+  /* CTA strip */
+  .cta-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Footer */
+  footer {
+    padding: var(--footer-pad-sm);
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
