@@ -31,13 +31,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Inject EmailJS credentials into config.js
+        env:
+          EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+        run: |
+          cat > assets/js/config.js << EOF
+          const EMAILJS_PUBLIC_KEY  = '${EMAILJS_PUBLIC_KEY}';
+          const EMAILJS_SERVICE_ID  = '${EMAILJS_SERVICE_ID}';
+          const EMAILJS_TEMPLATE_ID = '${EMAILJS_TEMPLATE_ID}';
+          EOF
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
